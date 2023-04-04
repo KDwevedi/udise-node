@@ -35,7 +35,7 @@ app.post('/authenticate', async (req, res) => {
     try {
         const requestJson = JSON.stringify(authenticateRequest);
         const base64EncodedJson = Buffer.from(requestJson).toString('base64');
-        const publicKey = getPublicKeyFromCert(certPath).export({type:"pkcs1", format: "pem"});
+        const publicKey = getPublicKeyFromCert(process.env.CERT_PATH).export({type:"pkcs1", format: "pem"});
         
         const publicKeyPem = `${publicKey}`;
         console.log(publicKeyPem);
